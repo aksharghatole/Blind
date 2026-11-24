@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
   tts=new TextToSpeech(this,result->runOnUiThread(()->{if(result==TextToSpeech.SUCCESS&&tts!=null){int lang=tts.setLanguage(new Locale("en","IN"));if(lang<0)lang=tts.setLanguage(Locale.ENGLISH);speechReady=lang>=0;}}));
   web.addJavascriptInterface(new NativeBridge(),"BlindNative");web.loadUrl(START);
  }
- private boolean local(Uri u){return u!=null&&"https".equals(u.getScheme())&&HOST.equals(u.getHost())&&(u.getPort()==-1||u.getPort()==443)&&(u.getPath()==null||u.getPath().isEmpty()||u.getPath().startsWith("/assets/"));}
+ private boolean local(Uri u){return u!=null&&"https".equals(u.getScheme())&&HOST.equals(u.getHost())&&(u.getPort()==-1||u.getPort()==443)&&(u.getPath()==null||u.getPath().isEmpty()||"/".equals(u.getPath())||u.getPath().startsWith("/assets/"));}
  private void toast(String s){Toast.makeText(this,s,Toast.LENGTH_SHORT).show();}
  private final class NativeBridge{
   @JavascriptInterface public void speak(String text){runOnUiThread(()->{if(speechReady&&tts!=null&&text!=null)tts.speak(text.substring(0,Math.min(3000,text.length())),TextToSpeech.QUEUE_FLUSH,null,"blind-colour");else toast("Text-to-speech unavailable. Check Android speech settings.");});}
