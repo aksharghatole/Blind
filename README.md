@@ -1,11 +1,17 @@
-# Blind — Colour Lens
+# Blind — Colour Lens v1.2
 
-Android-first colour identification PWA with live camera, photo sampling, manual colour entry, palette extraction, 242 approximate named references, local saved colours and CSV export. Images stay on the device.
+A privacy-first colour assistant for Android and the web.
 
-## Deploy
-In Settings > Pages, select Deploy from a branch, main, / (root), then Save. Open https://aksharghatole.github.io/Blind/ after deployment. In Android Chrome, allow camera access and use Add to Home screen / Install app. Offline support is available after a successful online load and cache installation.
+- Live camera and photo colour sampling, 242 named references, exact sampled HEX/RGB/HSL and approximate CMYK.
+- Speech, simple colour families, flashlight where supported, saved colours and CSV export.
+- Vision assistance: approximate protanopia, deuteranopia, tritanopia and greyscale previews; original sample stays unchanged.
+- Clothing: compare two garment colours, brightness contrast, subjective coordination suggestions and spoken results.
+- Offline PWA and installable Android APK project.
 
-## Local testing
-Run `python -m http.server 8000` and open http://localhost:8000. Camera requires HTTPS or localhost. This is not a native APK. Colour names are approximate; lighting, camera processing and image downsampling affect accuracy. Saved colours are local to your browser, so export a CSV before clearing site data.
+## Web
+https://aksharghatole.github.io/Blind/
 
-The application is bundled into index.html for easy deployment. Android camera and installation require device testing.
+## Android APK
+Open [Build Android APK](https://github.com/aksharghatole/Blind/actions/workflows/android.yml). After a successful run, download the Blind-Android-debug artifact, unzip it and install app-debug.apk on Android. If Android blocks installation, review the app source and grant install permission only to the trusted file manager used to open the APK. Debug signing is for testing only. See [Android build instructions](android/README.md).
+
+Android uses a native Java shell and local WebView UI. Device testing is required. Colour simulations are not diagnostic or medical tools; do not rely on camera colour identification for safety-critical decisions. Lighting affects measurements. Clothing advice is subjective. Saved colours remain in local device storage; web and APK have separate collections.
