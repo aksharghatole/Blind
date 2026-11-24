@@ -1,4 +1,4 @@
-const CACHE='colour-lens-v2';
+const CACHE='colour-lens-v3';
 const FILES=['./','./index.html','./manifest.webmanifest','./icon.svg'];
 const urls=new Set(FILES.map(f=>new URL(f,self.registration.scope).href));
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(f=>new Request(new URL(f,self.registration.scope),{cache:'reload'})))).then(()=>self.skipWaiting())));
